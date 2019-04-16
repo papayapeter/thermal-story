@@ -7,6 +7,8 @@ ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.64)
 
 printer = ThermalPrinter(uart)
 
+log = open('log.txt', 'a+')
+
 while (True):
     os.system('clear')
     print('Schreib die Geschichte weiter.')
@@ -22,31 +24,35 @@ while (True):
         elif text == '--feed': # feed to lines of paper
             printer.feed(2)
         elif text == '--clear': # clear all logs
-                printer.feed(2)
+                log.close()
+                os.system('rm -rf log.txt')
+                log = open('log.txt', 'a+')
         else:
             to_print = ''
 
             for s in text:
                 if s == 'ä':
-                    to_print += chr(0x84)
+                    to_print += 'ae'
                 if s == 'Ä':
-                    to_print += chr(0x8E)
+                    to_print += 'Ae'
                 elif s == 'ö':
-                    to_print += chr(0x94)
+                    to_print += 'oe'
                 elif s == 'Ö':
-                        to_print += chr(0x99)
+                        to_print += 'Oe'
                 elif s == 'ü':
-                    to_print += chr(0x80)
+                    to_print += 'ue'
                 elif s == 'Ü':
-                        to_print += chr(0x9A)
+                        to_print += 'Üe'
                 elif s == 'ß':
-                    to_print += chr(0xE0)
+                    to_print += 'ss'
                 else:
                     to_print += s
 
-
+            log.write(text)
             printer.print(to_print)
     else:
         text = input('Papier muss nachgelegt werden. Frag an der Bar nach.')
         if text == '--quit':
             break
+
+log.close()
