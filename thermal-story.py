@@ -1,6 +1,7 @@
 import os
 import serial
 import adafruit_thermal_printer
+import re
 
 uart = serial.Serial("/dev/serial0", baudrate=9600, timeout=3000)
 ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.64)
@@ -30,24 +31,8 @@ while (True):
         else:
             to_print = ''
 
-            for s in text:
-                if s == 'ä':
-                    to_print += 'ae'
-                if s == 'Ä':
-                    to_print += 'Ae'
-                elif s == 'ö':
-                    to_print += 'oe'
-                elif s == 'Ö':
-                        to_print += 'Oe'
-                elif s == 'ü':
-                    to_print += 'ue'
-                elif s == 'Ü':
-                        to_print += 'Ue'
-                elif s == 'ß':
-                    to_print += 'ss'
-                else:
-                    to_print += s
-
+            re.sub(r'[^\x00-\x7F]', '_', theString)
+            
             log.write(text + '\n')
             printer.print(to_print)
     else:
