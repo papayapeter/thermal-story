@@ -31,7 +31,7 @@ while (True):
         else:
             to_print = ''
 
-            re.sub(r'[^\x00-\x7F]', '_', text)
+            to_print = re.sub(r'[^\x00-\x7F]', '_', text)
 
             log.write(text + '\n')
             printer.print(to_print)
