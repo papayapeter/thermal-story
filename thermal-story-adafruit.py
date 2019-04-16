@@ -44,6 +44,26 @@ while (True):
         elif text == '--clear': # clear all logs
                 os.remove('log.txt')
         else: # print
+            # substitute german characters
+            tmp = ''
+            for c in text:
+                if c == 'Ä':
+                    tmp += 'Ae'
+                elif c == 'ä':
+                    tmp += 'ae'
+                elif c == 'Ö':
+                    tmp += 'Oe'
+                elif c == 'ö':
+                    tmp += 'oe'
+                elif c == 'Ü':
+                    tmp += 'Ue'
+                elif c == 'ü':
+                    tmp += 'ue'
+                elif c == 'ß':
+                    tmp += 'ss'
+                else:
+                    tmp += c
+
             # sort out unsupported characters
             to_print = ''
             to_print = re.sub(r'[^\x00-\x7F]', '#', text)
