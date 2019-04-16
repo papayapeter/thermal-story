@@ -42,7 +42,7 @@ while (True):
                 elif s == 'ü':
                     to_print += 'ue'
                 elif s == 'Ü':
-                        to_print += 'Üe'
+                        to_print += 'Ue'
                 elif s == 'ß':
                     to_print += 'ss'
                 else:
