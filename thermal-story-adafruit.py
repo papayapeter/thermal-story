@@ -14,7 +14,7 @@ ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.64)
 
 printer = ThermalPrinter(uart)
 
-# open file once (to make shure it is there)
+# open file once (to make sure it is there)
 log = open('log.txt', 'a+')
 log.close()
 
