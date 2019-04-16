@@ -48,7 +48,7 @@ while (True):
                 else:
                     to_print += s
 
-            log.write(text)
+            log.write(text + '\n')
             printer.print(to_print)
     else:
         text = input('Papier muss nachgelegt werden. Frag an der Bar nach.')
