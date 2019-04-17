@@ -1,4 +1,4 @@
-from adafruit_thermal_printer.thermal_printer import JUSTIFY_LEFT, \
+from adafruit_thermal_printer_mod.thermal_printer_mod import JUSTIFY_LEFT, \
 JUSTIFY_CENTER, JUSTIFY_RIGHT, SIZE_SMALL, SIZE_MEDIUM, SIZE_LARGE, \
 UNDERLINE_THIN, UNDERLINE_THICK
 
@@ -12,9 +12,9 @@ def get_printer_class(version):
     assert version is not None
     assert version >= 0.0
     if version < 2.64:
-        import adafruit_thermal_printer.thermal_printer_legacy as thermal_printer
+        import adafruit_thermal_printer.thermal_printer_legacy_mod as thermal_printer
     elif version < 2.68:
-        import adafruit_thermal_printer.thermal_printer_264 as thermal_printer
+        import adafruit_thermal_printer.thermal_printer_264_mod as thermal_printer
     else:
-        import adafruit_thermal_printer.thermal_printer as thermal_printer
+        import adafruit_thermal_printer.thermal_printer_mod as thermal_printer
     return thermal_printer.ThermalPrinter
