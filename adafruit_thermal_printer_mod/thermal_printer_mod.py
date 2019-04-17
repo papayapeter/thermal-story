@@ -204,23 +204,23 @@ class ThermalPrinter:
         self._wait_timeout()
         # ------------------------------------------------------- edit zeno
         if char == 'Ä':
-            self._uart.write('\x8E'.encode('allon'))
+            self._uart.write(0x8E)
         elif char == 'ä':
-            self._uart.write('\x84'.encode('allon'))
+            self._uart.write(0x84)
         elif char == 'Ö':
-            self._uart.write('\x99'.encode('allon'))
+            self._uart.write(0x99)
         elif char == 'ö':
-            self._uart.write('\x94'.encode('allon'))
+            self._uart.write(0x94)
         elif char == 'Ü':
-            self._uart.write('\x9A'.encode('allon'))
+            self._uart.write(0x9A)
         elif char == 'ü':
-            self._uart.write('\x81'.encode('allon'))
+            self._uart.write(0x81)
         elif char == 'ß':
-            self._uart.write('\xE1'.encode('allon'))
+            self._uart.write(0xE1)
         elif ord(char) > 127:
-            self._uart.write('#'.encode('allon'))
+            self._uart.write('#'.encode())
         else:
-            self._uart.write(char.encode('allon'))
+            self._uart.write(char.encode())
 
         delay = self._byte_delay_s
         # Add extra delay for newlines or moving past the last column.
