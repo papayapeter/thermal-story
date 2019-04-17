@@ -1,11 +1,11 @@
 # zeno gries
 # thermal story
 # 2019
-# adafruit library version (no ä, ö, ü, ß)
+# modified adafruit library version (ä, ö, ü, ß works)
 
 import os
 import serial
-import adafruit_thermal_printer_mod
+import adafruit_thermal_printer_mod as adafruit_thermal_printer
 import re
 
 # establish objects
@@ -46,36 +46,12 @@ while (True):
                 log = open('log.txt', 'w+')
                 log.close()
         else: # print
-            # substitute german characters
-            tmp = ''
-            for c in text:
-                if c == 'Ä':
-                    tmp += 'Ae'
-                elif c == 'ä':
-                    tmp += 'ae'
-                elif c == 'Ö':
-                    tmp += 'Oe'
-                elif c == 'ö':
-                    tmp += 'oe'
-                elif c == 'Ü':
-                    tmp += 'Ue'
-                elif c == 'ü':
-                    tmp += 'ue'
-                elif c == 'ß':
-                    tmp += 'ss'
-                else:
-                    tmp += c
-
-            # sort out unsupported characters
-            to_print = ''
-            to_print = re.sub(r'[^\x00-\x7F]', '#', tmp)
-
             # write to log and print
             log = open('log.txt', 'a+')
-            log.write(to_print + '\n')
+            log.write(text + '\n')
             log.close()
 
-            printer.print(to_print)
+            printer.print(text)
     else: # if there is no paper then print that or quit
         text = input('Papier muss nachgelegt werden. Frag an der Bar nach.')
         if text == '--quit':

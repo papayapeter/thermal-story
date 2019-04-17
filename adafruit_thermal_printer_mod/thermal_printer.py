@@ -202,7 +202,26 @@ class ThermalPrinter:
         if char == '\r':
             return  # Strip carriage returns by skipping them.
         self._wait_timeout()
-        self._uart.write(char.encode('ascii'))
+        # ------------------------------------------------------- edit zeno
+        if char == 'Ä':
+            self._uart.write('\x8E')
+        elif char == 'ä':
+            self._uart.write('\x84')
+        elif char == 'Ö':
+            self._uart.write('\x99')
+        elif char == 'ö':
+            self._uart.write('\x94')
+        elif char == 'Ü':
+            self._uart.write('\x9A')
+        elif char == 'ü':
+            self._uart.write('\x81')
+        elif char == 'ß':
+            self._uart.write('\xE1')
+        elif ord(char) > 127:
+            self._uart.write('#')
+        else:
+            self._uart.write(char)
+
         delay = self._byte_delay_s
         # Add extra delay for newlines or moving past the last column.
         if char == '\n' or self._column == self._max_column:
