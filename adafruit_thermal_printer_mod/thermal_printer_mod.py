@@ -218,9 +218,9 @@ class ThermalPrinter:
         elif char == 'ß':
             self._uart.write(serialcmd.encode('\xE1'))
         elif ord(char) > 127:
-            self._uart.write('#')
+            self._uart.write(serialcmd.encode('#'))
         else:
-            self._uart.write(char)
+            self._uart.write(serialcmd.encode(char))
 
         delay = self._byte_delay_s
         # Add extra delay for newlines or moving past the last column.
