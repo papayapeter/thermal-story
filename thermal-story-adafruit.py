@@ -68,7 +68,7 @@ while (True):
 
             # sort out unsupported characters
             to_print = ''
-            to_print = re.sub(r'[^\x00-\x7F]', '#', text)
+            to_print = re.sub(r'[^\x00-\x7F]', '#', tmp)
 
             # write to log and print
             log = open('log.txt', 'a+')
