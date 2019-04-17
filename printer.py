@@ -257,36 +257,36 @@ class ThermalPrinter(object):
                     self.printer.write(bytes.fromhex(c))
 
             sleep(0.2)
-        else:
-            l = list(msg)
-            le = len(msg)
-            for i in xrange(chars_per_line + 1, le, chars_per_line + 1):
-                l.insert(i, '\n')
-
-            #edit
-            msg = "".join(l))
-            for c in msg:
-                if c == 'Ä':
-                    self.printer.write(bytes.fromhex('8E'))
-                elif c == 'ä':
-                    self.printer.write(bytes.fromhex('84'))
-                elif c == 'Ö':
-                    self.printer.write(bytes.fromhex('99'))
-                elif c == 'ö':
-                    self.printer.write(bytes.fromhex('94'))
-                elif c == 'Ü':
-                    self.printer.write(bytes.fromhex('9A'))
-                elif c == 'ü':
-                    self.printer.write(bytes.fromhex('80'))
-                elif c == 'ß':
-                    self.printer.write(bytes.fromhex('E0'))
-                elif ord(c) > 127:
-                    self.printer.write(bytes.fromhex('#'))
-                else:
-                    self.printer.write(bytes.fromhex(c))
-
-
-            sleep(0.2)
+        # else:
+        #     l = list(msg)
+        #     le = len(msg)
+        #     for i in xrange(chars_per_line + 1, le, chars_per_line + 1):
+        #         l.insert(i, '\n')
+        #
+        #     #edit
+        #     msg = "".join(l))
+        #     for c in msg:
+        #         if c == 'Ä':
+        #             self.printer.write(bytes.fromhex('8E'))
+        #         elif c == 'ä':
+        #             self.printer.write(bytes.fromhex('84'))
+        #         elif c == 'Ö':
+        #             self.printer.write(bytes.fromhex('99'))
+        #         elif c == 'ö':
+        #             self.printer.write(bytes.fromhex('94'))
+        #         elif c == 'Ü':
+        #             self.printer.write(bytes.fromhex('9A'))
+        #         elif c == 'ü':
+        #             self.printer.write(bytes.fromhex('80'))
+        #         elif c == 'ß':
+        #             self.printer.write(bytes.fromhex('E0'))
+        #         elif ord(c) > 127:
+        #             self.printer.write(bytes.fromhex('#'))
+        #         else:
+        #             self.printer.write(bytes.fromhex(c))
+        #
+        # 
+        #     sleep(0.2)
 
     def print_markup(self, markup):
         """ Print text with markup for styling.

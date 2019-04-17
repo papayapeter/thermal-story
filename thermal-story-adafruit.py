@@ -43,6 +43,8 @@ while (True):
             printer.feed(2)
         elif text == '--clear': # clear all logs
                 os.remove('log.txt')
+                log = open('log.txt', 'w+')
+                log.close()
         else: # print
             # substitute german characters
             tmp = ''
