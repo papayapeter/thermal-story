@@ -5,12 +5,12 @@
 
 import os
 import serial
-import adafruit_thermal_printer_mod as adafruit_thermal_printer
+import adafruit_thermal_printer_mod
 import re
 
 # establish objects
 uart = serial.Serial('/dev/serial0', baudrate=9600, timeout=3000)
-ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.64)
+ThermalPrinter = adafruit_thermal_printer_mod.get_printer_class(2.64)
 
 printer = ThermalPrinter(uart)
 
