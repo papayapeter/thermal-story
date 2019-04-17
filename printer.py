@@ -49,7 +49,7 @@ class ThermalPrinter(object):
     #SERIALPORT = '/dev/ttyO2'
     # this might work better on a Raspberry Pi
     # SERIALPORT = '/dev/ttyAMA0'
-    # GPIO Serial
+    # default primary serial - raspbian
     SERIALPORT = '/dev/serial0'
 
     BAUDRATE = 9600
@@ -229,32 +229,32 @@ class ThermalPrinter(object):
         self.printer.write(chr(12))  # USE CHART NUMBER OF CHAR
         self.printer.write(msg)
 
+    # edit: enable german characters
     def print_text(self, msg, chars_per_line=None):
         """ Print some text defined by msg. If chars_per_line is defined,
             inserts newlines after the given amount. Use normal '\n' line breaks for
             empty lines. """
-        # edit: enable german characters
         if not chars_per_line:
             # edit
             for c in msg:
                 if c == 'Ä':
-                    self.printer.write(0x8E)
+                    self.printer.write(bytes.fromhex('8E'))
                 elif c == 'ä':
-                    self.printer.write(0x84)
+                    self.printer.write(bytes.fromhex('84'))
                 elif c == 'Ö':
-                    self.printer.write(0x99)
+                    self.printer.write(bytes.fromhex('99'))
                 elif c == 'ö':
-                    self.printer.write(0x94)
+                    self.printer.write(bytes.fromhex('94'))
                 elif c == 'Ü':
-                    self.printer.write(0x9A)
+                    self.printer.write(bytes.fromhex('9A'))
                 elif c == 'ü':
-                    self.printer.write(0x80)
+                    self.printer.write(bytes.fromhex('80'))
                 elif c == 'ß':
-                    self.printer.write(0xE0)
+                    self.printer.write(bytes.fromhex('E0'))
                 elif ord(c) > 127:
-                    self.printer.write('#')
+                    self.printer.write(bytes.fromhex('#'))
                 else:
-                    self.printer.write(c)
+                    self.printer.write(bytes.fromhex(c))
 
             sleep(0.2)
         else:
@@ -267,23 +267,25 @@ class ThermalPrinter(object):
             msg = "".join(l))
             for c in msg:
                 if c == 'Ä':
-                    self.printer.write(0x8E)
+                    self.printer.write(bytes.fromhex('8E'))
                 elif c == 'ä':
-                    self.printer.write(0x84)
+                    self.printer.write(bytes.fromhex('84'))
                 elif c == 'Ö':
-                    self.printer.write(0x99)
+                    self.printer.write(bytes.fromhex('99'))
                 elif c == 'ö':
-                    self.printer.write(0x94)
+                    self.printer.write(bytes.fromhex('94'))
                 elif c == 'Ü':
-                    self.printer.write(0x9A)
+                    self.printer.write(bytes.fromhex('9A'))
                 elif c == 'ü':
-                    self.printer.write(0x80)
+                    self.printer.write(bytes.fromhex('80'))
                 elif c == 'ß':
-                    self.printer.write(0xE0)
+                    self.printer.write(bytes.fromhex('E0'))
                 elif ord(c) > 127:
-                    self.printer.write('#')
+                    self.printer.write(bytes.fromhex('#'))
                 else:
-                    self.printer.write(c)
+                    self.printer.write(bytes.fromhex(c))
+
+
             sleep(0.2)
 
     def print_markup(self, markup):
