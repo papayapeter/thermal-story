@@ -204,21 +204,21 @@ class ThermalPrinter:
         self._wait_timeout()
         # ------------------------------------------------------- edit zeno
         if char == 'Ä':
-            self._uart.write(bytes('\x8E'.encode())[0])
+            self._uart.write(b'\x8E')
         elif char == 'ä':
-            self._uart.write(bytes('\x84'.encode())[0])
+            self._uart.write(b'\x84')
         elif char == 'Ö':
-            self._uart.write(bytes('\x99'.encode())[0])
+            self._uart.write(b'\x99')
         elif char == 'ö':
-            self._uart.write(bytes('\x94'.encode())[0])
+            self._uart.write(b'\x94')
         elif char == 'Ü':
-            self._uart.write(bytes('\x9A'.encode())[0])
+            self._uart.write(b'\x9A')
         elif char == 'ü':
-            self._uart.write(bytes('\x81'.encode())[0])
+            self._uart.write(b'\x81')
         elif char == 'ß':
-            self._uart.write(bytes('\xE1'.encode())[0])
+            self._uart.write(b'\xE1')
         elif ord(char) > 127:
-            self._uart.write('#'.encode())
+            self._uart.write(b'#')
         else:
             self._uart.write(char.encode())
 
