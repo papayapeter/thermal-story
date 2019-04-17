@@ -204,23 +204,23 @@ class ThermalPrinter:
         self._wait_timeout()
         # ------------------------------------------------------- edit zeno
         if char == 'Ä':
-            self._uart.write(serialcmd.encode('\x8E'))
+            self._uart.write('\x8E'.encode())
         elif char == 'ä':
-            self._uart.write(serialcmd.encode('\x84'))
+            self._uart.write('\x84'.encode())
         elif char == 'Ö':
-            self._uart.write(serialcmd.encode('\x99'))
+            self._uart.write('\x99'.encode())
         elif char == 'ö':
-            self._uart.write(serialcmd.encode('\x94'))
+            self._uart.write('\x94'.encode())
         elif char == 'Ü':
-            self._uart.write(serialcmd.encode('\x9A'))
+            self._uart.write('\x9A'.encode())
         elif char == 'ü':
-            self._uart.write(serialcmd.encode('\x81'))
+            self._uart.write('\x81'.encode())
         elif char == 'ß':
-            self._uart.write(serialcmd.encode('\xE1'))
+            self._uart.write('\xE1'.encode())
         elif ord(char) > 127:
-            self._uart.write(serialcmd.encode('#'))
+            self._uart.write('#'.encode())
         else:
-            self._uart.write(serialcmd.encode(char))
+            self._uart.write(char.encode())
 
         delay = self._byte_delay_s
         # Add extra delay for newlines or moving past the last column.
