@@ -1,7 +1,7 @@
 # zeno gries
 # thermal story
 # 2019
-# adafruit library version (no ä, ö, ü, ß / ae, oe, etc. instead)
+# using adafruit library version (no ä, ö, ü, ß / ae, oe, etc. instead)
 
 import os
 import serial

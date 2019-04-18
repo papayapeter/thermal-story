@@ -1,11 +1,11 @@
 # zeno gries
 # thermal story
 # 2019
-# modified adafruit library version (ä, ö, ü, ß works)
+# using froked adafruit library version (with german and french letter support)
 
 import os
 import serial
-import adafruit_thermal_printer_mod as adafruit_thermal_printer
+import adafruit_thermal_printer
 import re
 
 # establish objects
