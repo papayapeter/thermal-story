@@ -6,6 +6,7 @@
 import os
 import serial
 import adafruit_thermal_printer
+import readline
 
 # establish objects
 uart = serial.Serial('/dev/serial0', baudrate=9600, timeout=3000)

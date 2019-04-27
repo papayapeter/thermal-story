@@ -6,6 +6,7 @@
 import os
 import serial
 import adafruit_thermal_printer
+import readline
 import re
 
 # establish objects
