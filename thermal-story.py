@@ -18,18 +18,21 @@ printer = ThermalPrinter(uart)
 log = open('log.txt', 'a+')
 log.close()
 
+# clear screen
+os.system('clear')
+
+# print intruction
+print('Schreib die Geschichte weiter.\n\n')
+
+# print story so far line by line
+for line in open('log.txt'):
+    print(line)
+
 # main loop
 while (True):
-    # clear screen
-    os.system('clear')
 
     # check for paper
     if printer.has_paper():
-        # print intruction
-        print('Schreib die Geschichte weiter.\n\n')
-        # print story so far line by line
-        for line in open('log.txt'):
-            print(line)
         # wait for input
         text = input("> ")
 
@@ -45,6 +48,12 @@ while (True):
                 os.remove('log.txt')
                 log = open('log.txt', 'w+')
                 log.close()
+
+                # clear screen
+                os.system('clear')
+
+                # print intruction
+                print('Schreib die Geschichte weiter.\n\n')
         else: # print
             # write to log and print
             log = open('log.txt', 'a+')
